@@ -4,6 +4,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.widget.client.TextButton;
 import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.core.client.util.Padding;
 import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -65,7 +66,6 @@ public class HomePageView implements IsWidget,
 		center.setPadding(new Padding(5));
 		center.setVBoxLayoutAlign(VBoxLayoutAlign.STRETCHMAX);
 		center.setBorders(false);
-		center.setStylePrimaryName("");
 
 		center.add(buildStudentMenu());
 		center.add(buildStaffMenu());
@@ -94,6 +94,11 @@ public class HomePageView implements IsWidget,
 		FieldSet fieldSet = new FieldSet();
 		fieldSet.setHeadingText("Student");
 		fieldSet.setCollapsible(true);
+		
+		fieldSet.add(new TextButton("Attendance"));
+		fieldSet.add(new TextButton("Lookup/Search"));
+		fieldSet.add(new TextButton("Course/Examination"));
+		fieldSet.add(new TextButton("Reports"));
 
 		return fieldSet;
 	}
