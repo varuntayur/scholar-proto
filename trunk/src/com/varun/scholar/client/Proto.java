@@ -12,7 +12,9 @@ public class Proto implements EntryPoint {
 		HomePageView con = new HomePageView();
 		
 		Viewport viewport = new Viewport();
-		viewport.add(con.asWidget(), new MarginData(15));
+//		viewport.add(con.asWidget(), new MarginData(15));
+		viewport.add(con.asWidget(), new MarginData(5));
+		viewport.setBorders(true);
 		
 		RootPanel.get().add(viewport);
 	}

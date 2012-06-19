@@ -10,7 +10,10 @@ import com.sencha.gxt.core.client.util.Padding;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
+import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData;
 import com.sencha.gxt.widget.core.client.container.Container;
+import com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign;
 import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer;
@@ -37,10 +40,10 @@ public class HomePageView implements IsWidget,
 		con.setCenterWidget(center, centerData);
 		con.setEastWidget(east, eastData);
 
-		SimpleContainer simple = new SimpleContainer();
-		simple.add(con, new MarginData(1));
+//		SimpleContainer simple = new SimpleContainer();
+//		simple.add(con, new MarginData(1));
 
-		return simple;
+		return con;
 	}
 
 	private BorderLayoutData buildEastPanelLayoutData() {
@@ -53,6 +56,7 @@ public class HomePageView implements IsWidget,
 
 	private ContentPanel buildEastPanel() {
 		ContentPanel east = new ContentPanel();
+		east.setHeadingText("News Feed");
 		return east;
 	}
 
@@ -62,10 +66,13 @@ public class HomePageView implements IsWidget,
 	}
 
 	private Container buildCenterPanel() {
+		ContentPanel panel = new ContentPanel();
+
 		VBoxLayoutContainer center = new VBoxLayoutContainer();
 		center.setPadding(new Padding(5));
-		center.setVBoxLayoutAlign(VBoxLayoutAlign.STRETCHMAX);
+		center.setVBoxLayoutAlign(VBoxLayoutAlign.STRETCH);
 		center.setBorders(false);
+		panel.add(center);
 
 		center.add(buildStudentMenu());
 		center.add(buildStaffMenu());
@@ -94,11 +101,21 @@ public class HomePageView implements IsWidget,
 		FieldSet fieldSet = new FieldSet();
 		fieldSet.setHeadingText("Student");
 		fieldSet.setCollapsible(true);
-		
-		fieldSet.add(new TextButton("Attendance"));
-		fieldSet.add(new TextButton("Lookup/Search"));
-		fieldSet.add(new TextButton("Course/Examination"));
-		fieldSet.add(new TextButton("Reports"));
+
+		HBoxLayoutContainer c = new HBoxLayoutContainer();
+		c.setPadding(new Padding(5));
+		c.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
+
+		TextButton attendance = new TextButton("Attendance");
+		attendance.setStylePrimaryName("x-btn");
+		c.add(attendance, new BoxLayoutData(new Margins(0, 5, 0, 0)));
+		c.add(new TextButton("Lookup/Search"), new BoxLayoutData(new Margins(0,
+				5, 0, 0)));
+		c.add(new TextButton("Course/Examination"), new BoxLayoutData(
+				new Margins(0, 5, 0, 0)));
+		c.add(new TextButton("Reports"), new BoxLayoutData(new Margins(0)));
+
+		fieldSet.add(c);
 
 		return fieldSet;
 	}
@@ -108,6 +125,20 @@ public class HomePageView implements IsWidget,
 		fieldSet.setHeadingText("Staff");
 		fieldSet.setCollapsible(true);
 
+		HBoxLayoutContainer c = new HBoxLayoutContainer();
+		c.setPadding(new Padding(5));
+		c.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
+
+		c.add(new TextButton("Attendance"), new BoxLayoutData(new Margins(0, 5,
+				0, 0)));
+		c.add(new TextButton("Lookup/Search"), new BoxLayoutData(new Margins(0,
+				5, 0, 0)));
+		c.add(new TextButton("TimeTable"), new BoxLayoutData(new Margins(0, 5,
+				0, 0)));
+		c.add(new TextButton("Reports"), new BoxLayoutData(new Margins(0)));
+
+		fieldSet.add(c);
+
 		return fieldSet;
 	}
 
@@ -115,6 +146,20 @@ public class HomePageView implements IsWidget,
 		FieldSet fieldSet = new FieldSet();
 		fieldSet.setHeadingText("Administration");
 		fieldSet.setCollapsible(true);
+
+		HBoxLayoutContainer c = new HBoxLayoutContainer();
+		c.setPadding(new Padding(5));
+		c.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
+
+		c.add(new TextButton("Payroll"), new BoxLayoutData(new Margins(0, 5, 0,
+				0)));
+		c.add(new TextButton("Fee Collection"), new BoxLayoutData(new Margins(
+				0, 5, 0, 0)));
+		c.add(new TextButton("Inventory"), new BoxLayoutData(new Margins(0, 5,
+				0, 0)));
+		c.add(new TextButton("Admissions"), new BoxLayoutData(new Margins(0)));
+
+		fieldSet.add(c);
 
 		return fieldSet;
 	}
@@ -124,6 +169,20 @@ public class HomePageView implements IsWidget,
 		fieldSet.setHeadingText("Library");
 		fieldSet.setCollapsible(true);
 
+		HBoxLayoutContainer c = new HBoxLayoutContainer();
+		c.setPadding(new Padding(5));
+		c.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
+
+		c.add(new TextButton("Inventory"), new BoxLayoutData(new Margins(0, 5,
+				0, 0)));
+		c.add(new TextButton("Lookup/Search"), new BoxLayoutData(new Margins(0,
+				5, 0, 0)));
+		c.add(new TextButton("OPAC"),
+				new BoxLayoutData(new Margins(0, 5, 0, 0)));
+		c.add(new TextButton("Reports"), new BoxLayoutData(new Margins(0)));
+
+		fieldSet.add(c);
+
 		return fieldSet;
 	}
 
@@ -131,6 +190,23 @@ public class HomePageView implements IsWidget,
 		FieldSet fieldSet = new FieldSet();
 		fieldSet.setHeadingText("Other");
 		fieldSet.setCollapsible(true);
+
+		HBoxLayoutContainer c = new HBoxLayoutContainer();
+		c.setPadding(new Padding(5));
+		c.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
+
+		c.add(new TextButton("Inventory"), new BoxLayoutData(new Margins(0, 5,
+				0, 0)));
+		c.add(new TextButton("Transport"), new BoxLayoutData(new Margins(0, 5,
+				0, 0)));
+		c.add(new TextButton("Issue Memo"), new BoxLayoutData(new Margins(0, 5,
+				0, 0)));
+		c.add(new TextButton("Publish School Events"), new BoxLayoutData(
+				new Margins(0, 5, 0, 0)));
+
+		c.add(new TextButton("Users/Roles"), new BoxLayoutData(new Margins(0)));
+
+		fieldSet.add(c);
 
 		return fieldSet;
 	}
