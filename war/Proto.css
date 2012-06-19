@@ -47,23 +47,3 @@ h1 {
 	border-bottom: 1px solid #567422;
 }
 
-.x-btn {
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	-o-border-radius: 3px;
-	-ms-border-radius: 3px;
-	-khtml-border-radius: 3px;
-	border-radius: 3px;
-	padding: 3px 6px 4px 6px;
-	border-width: 1px;
-	border-style: solid;
-	background-image: none;
-	background-color: #1369AE;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2591E8),
-		color-stop(3%, #1574C0), color-stop(100%, #115D9B) );
-	background-image: -webkit-linear-gradient(top, #2591E8, #1574C0 3%, #115D9B);
-	background-image: -moz-linear-gradient(top, #2591E8, #1574C0 3%, #115D9B);
-	background-image: -o-linear-gradient(top, #2591E8, #1574C0 3%, #115D9B);
-	background-image: -ms-linear-gradient(top, #2591E8, #1574C0 3%, #115D9B);
-	background-image: linear-gradient(top, #2591E8, #1574C0 3%, #115D9B);
-}
